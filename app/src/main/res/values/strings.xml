@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SpeechToText</string>
+    <string name="tap_to_open_mic">Click to Open Mic</string>
+    <string name="commands">Commands</string>
+</resources>
