@@ -11,10 +11,10 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = CommandsText.class, version = 1)
-public abstract class TextToSpeechDb extends RoomDatabase {
+@Database(entities = Zikar.class, version = 1)
+public abstract class ZikarDb extends RoomDatabase {
 
-    private static TextToSpeechDb INSTANCE;
+    private static ZikarDb INSTANCE;
     private static AppPreference appPreference;
 
     private static Callback sRoomDatabaseCallback = new Callback() {
@@ -31,10 +31,10 @@ public abstract class TextToSpeechDb extends RoomDatabase {
         }
     };
 
-    public static TextToSpeechDb getInstance(Context context) {
+    public static ZikarDb getInstance(Context context) {
         if (INSTANCE == null) {
             appPreference = AppPreference.getInstance(context);
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), TextToSpeechDb.class, "text_to_speech")
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), ZikarDb.class, "text_to_speech")
                     .addCallback(sRoomDatabaseCallback)
                     .fallbackToDestructiveMigration()
                     .build();
@@ -42,6 +42,6 @@ public abstract class TextToSpeechDb extends RoomDatabase {
         return INSTANCE;
     }
 
-    public abstract CommandDao commandDao();
+    public abstract ZikarDao commandDao();
 
 }

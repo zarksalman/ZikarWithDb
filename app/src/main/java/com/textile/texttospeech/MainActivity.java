@@ -21,11 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     private final int REQ_CODE_SPEECH_INPUT = 100;
-    private TextView voiceInput;
     private TextView speakButton;
     private RecyclerView recyclerView;
-    private CommandDao commandDao;
-    private CommandsViewModel commandsViewModel;
+    private ZikarViewModel zikarViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv_commands);
         speakButton = findViewById(R.id.btnSpeak);
 
-        commandsViewModel = ViewModelProviders.of(this).get(CommandsViewModel.class);
+        zikarViewModel = ViewModelProviders.of(this).get(ZikarViewModel.class);
 
         setAdaptersData();
 
@@ -78,10 +76,10 @@ public class MainActivity extends AppCompatActivity {
                     ArrayList<String> result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
-                    CommandsText commandsText = new CommandsText();
-                    commandsText.setCommand(result.get(0));
+                    Zikar zikar = new Zikar();
+                    zikar.setCommand(result.get(0));
 
-                    commandsViewModel.insertCommandsText(commandsText);
+                    zikarViewModel.insertCommandsText(zikar);
                 }
                 break;
             }
@@ -92,15 +90,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void setAdaptersData() {
 
-        commandsViewModel.getAllCommands().observe(this, new Observer<List<CommandsText>>() {
+        zikarViewModel.getAllCommands().observe(this, new Observer<List<Zikar>>() {
             @Override
-            public void onChanged(List<CommandsText> commandsTexts) {
+            public void onChanged(List<Zikar> zikars) {
 
-                CommandAdapter commandAdapter = new CommandAdapter(MainActivity.this);
+                ZikarAdapter zikarAdapter = new ZikarAdapter(MainActivity.this);
                 recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this, RecyclerView.VERTICAL, false));
-                commandAdapter.setData(commandsTexts);
-                recyclerView.setAdapter(commandAdapter);
-                commandAdapter.notifyDataSetChanged();
+                zikarAdapter.setData(zikars);
+                recyclerView.setAdapter(zikarAdapter);
+                zikarAdapter.notifyDataSetChanged();
             }
         });
     }

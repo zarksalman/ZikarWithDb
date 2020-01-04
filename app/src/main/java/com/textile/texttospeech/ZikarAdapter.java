@@ -13,14 +13,14 @@ import com.textile.texttospeech.databinding.CommandItemBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommandAdapter extends RecyclerView.Adapter<CommandAdapter.CommandsViewHolder> {
+public class ZikarAdapter extends RecyclerView.Adapter<ZikarAdapter.CommandsViewHolder> {
 
     private Context mContext;
-    private List<CommandsText> commandsTextList = new ArrayList<>();
+    private List<Zikar> zikarList = new ArrayList<>();
     private LayoutInflater inflater;
     private CommandItemBinding commandItemBinding;
 
-    public CommandAdapter(Context context) {
+    public ZikarAdapter(Context context) {
         mContext = context;
         inflater = LayoutInflater.from(context);
     }
@@ -35,18 +35,18 @@ public class CommandAdapter extends RecyclerView.Adapter<CommandAdapter.Commands
 
     @Override
     public void onBindViewHolder(@NonNull CommandsViewHolder holder, int position) {
-        CommandsText commandsText = commandsTextList.get(position);
-        holder.bindHolder(commandsText);
+        Zikar zikar = zikarList.get(position);
+        holder.bindHolder(zikar);
     }
 
     @Override
     public int getItemCount() {
-        return commandsTextList.size();
+        return zikarList.size();
     }
 
-    public void setData(List<CommandsText> commandsTexts) {
+    public void setData(List<Zikar> zikars) {
 
-        this.commandsTextList = commandsTexts;
+        this.zikarList = zikars;
         notifyDataSetChanged();
     }
 
@@ -61,9 +61,9 @@ public class CommandAdapter extends RecyclerView.Adapter<CommandAdapter.Commands
             mCommandItemBinding = commandItemBinding;
         }
 
-        void bindHolder(CommandsText commandsText) {
+        void bindHolder(Zikar zikar) {
 
-            mCommandItemBinding.tvCommand.setText(commandsText.getCommand());
+            mCommandItemBinding.tvCommand.setText(zikar.getCommand());
         }
     }
 }

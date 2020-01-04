@@ -9,14 +9,14 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "commands")
-public class CommandsText {
+public class Zikar {
 
     @PrimaryKey
     @ColumnInfo(name = "id")
-    Integer id;
-    String command;
+    private Integer id;
+    private String zikar;
 
-    public CommandsText() {
+    public Zikar() {
     }
 
     public Integer getId() {
@@ -28,10 +28,10 @@ public class CommandsText {
     }
 
     public String getCommand() {
-        return command;
+        return zikar;
     }
 
     public void setCommand(String command) {
-        this.command = command;
+        this.zikar = command;
     }
 }

@@ -10,19 +10,19 @@ import androidx.room.Query;
 import java.util.List;
 
 @Dao
-public interface CommandDao {
+public interface ZikarDao {
 
-    @Query("SELECT * FROM commands")
-    LiveData<List<CommandsText>> getAllCommands();
+    @Query("SELECT * FROM Zikar")
+    LiveData<List<Zikar>> getAllCommands();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertCommands(CommandsText... commandsTexts);
+    void insertCommands(Zikar... zikars);
 
     @Delete
-    void deleteCommand(CommandsText commandsText);
+    void deleteCommand(Zikar zikar);
 
 
-    @Query("DELETE from commands")
+    @Query("DELETE from Zikar")
     void deleteAllCommands();
 
 }
