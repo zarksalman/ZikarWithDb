@@ -1,59 +1,45 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="2dp">
+<layout>
 
-    <TextView
-
-        android:id="@+id/title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:text="@string/commands"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:background="@android:color/white"
-        android:elevation="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_commands"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/container"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
-
-    <LinearLayout
-
-        android:id="@+id/container"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="match_parent"
+        android:padding="2dp">
 
-        <Button
-            android:id="@+id/btnSpeak"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:padding="16dp"
-            android:text="@string/tap_to_open_mic"
-            android:textStyle="normal" />
-    </LinearLayout>
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/zikar_digital_tasbeeh"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/btn_add_zikar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="@string/add_new_ziker"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btn_select_zikar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/select_zikar"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

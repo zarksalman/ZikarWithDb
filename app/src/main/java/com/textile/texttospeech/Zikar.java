@@ -8,13 +8,15 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "commands")
+@Entity(tableName = "zikar")
 public class Zikar {
 
     @PrimaryKey
     @ColumnInfo(name = "id")
     private Integer id;
     private String zikar;
+    private String count;
+    private String date;
 
     public Zikar() {
     }
@@ -27,11 +29,27 @@ public class Zikar {
         this.id = id;
     }
 
-    public String getCommand() {
+    public String getZikar() {
         return zikar;
     }
 
-    public void setCommand(String command) {
-        this.zikar = command;
+    public void setZikar(String zikar) {
+        this.zikar = zikar;
+    }
+
+    public String getCount() {
+        return count;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
     }
 }

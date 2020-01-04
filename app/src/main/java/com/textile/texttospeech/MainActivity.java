@@ -2,16 +2,20 @@ package com.textile.texttospeech;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.database.DatabaseUtils;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.textile.texttospeech.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,26 +28,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView speakButton;
     private RecyclerView recyclerView;
     private ZikarViewModel zikarViewModel;
+    private ActivityMainBinding activityMainBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        recyclerView = findViewById(R.id.rv_commands);
-        speakButton = findViewById(R.id.btnSpeak);
-
+        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         zikarViewModel = ViewModelProviders.of(this).get(ZikarViewModel.class);
-
-        setAdaptersData();
-
-        speakButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                askSpeechInput();
-            }
-        });
 
     }
 
@@ -77,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
                     Zikar zikar = new Zikar();
-                    zikar.setCommand(result.get(0));
+                    zikar.setZikar(result.get(0));
 
                     zikarViewModel.insertCommandsText(zikar);
                 }
@@ -86,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
 
     private void setAdaptersData() {
 

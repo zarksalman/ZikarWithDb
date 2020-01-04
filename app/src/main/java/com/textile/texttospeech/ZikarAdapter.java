@@ -63,7 +63,7 @@ public class ZikarAdapter extends RecyclerView.Adapter<ZikarAdapter.CommandsView
 
         void bindHolder(Zikar zikar) {
 
-            mCommandItemBinding.tvCommand.setText(zikar.getCommand());
+            mCommandItemBinding.tvCommand.setText(zikar.getZikar());
         }
     }
 }

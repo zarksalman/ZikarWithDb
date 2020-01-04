@@ -11,7 +11,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = Zikar.class, version = 1)
+@Database(entities = Zikar.class, version = 1, exportSchema = false)
 public abstract class ZikarDb extends RoomDatabase {
 
     private static ZikarDb INSTANCE;
@@ -34,7 +34,7 @@ public abstract class ZikarDb extends RoomDatabase {
     public static ZikarDb getInstance(Context context) {
         if (INSTANCE == null) {
             appPreference = AppPreference.getInstance(context);
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), ZikarDb.class, "text_to_speech")
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), ZikarDb.class, "zikar_app")
                     .addCallback(sRoomDatabaseCallback)
                     .fallbackToDestructiveMigration()
                     .build();

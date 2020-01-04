@@ -13,16 +13,15 @@ import java.util.List;
 public interface ZikarDao {
 
     @Query("SELECT * FROM Zikar")
-    LiveData<List<Zikar>> getAllCommands();
+    LiveData<List<Zikar>> getAllZikars();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertCommands(Zikar... zikars);
+    void insertZikar(Zikar... zikars);
 
     @Delete
-    void deleteCommand(Zikar zikar);
+    void deleteZikar(Zikar zikar);
 
 
     @Query("DELETE from Zikar")
-    void deleteAllCommands();
-
+    void deleteAllZikar();
 }

@@ -27,7 +27,7 @@ public class ZikarViewModel extends AndroidViewModel {
 
     public LiveData<List<Zikar>> getAllCommands() {
 
-        return zikarDao.getAllCommands();
+        return zikarDao.getAllZikars();
     }
 
     private class InsertCommandToDb extends AsyncTask<Zikar, Void, Void> {
@@ -41,7 +41,7 @@ public class ZikarViewModel extends AndroidViewModel {
         @Override
         protected Void doInBackground(Zikar... zikars) {
 
-            mZikarDao.insertCommands(zikars[0]);
+            mZikarDao.insertZikar(zikars[0]);
             return null;
         }
     }
