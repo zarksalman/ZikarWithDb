@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         zikarViewModel = ViewModelProviders.of(this).get(ZikarViewModel.class);
 
+        setAdaptersData();
     }
 
     // Showing google speech input dialog
