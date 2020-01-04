@@ -20,12 +20,12 @@ public class ZikarViewModel extends AndroidViewModel {
         zikarDao = ZikarDb.getInstance(application).commandDao();
     }
 
-    public void insertCommandsText(Zikar zikar) {
+    public void insertZikarText(Zikar zikar) {
 
         new InsertCommandToDb(zikarDao).execute(zikar);
     }
 
-    public LiveData<List<Zikar>> getAllCommands() {
+    public LiveData<List<Zikar>> getAllZikars() {
 
         return zikarDao.getAllZikars();
     }

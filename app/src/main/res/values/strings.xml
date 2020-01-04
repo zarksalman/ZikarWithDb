@@ -1,9 +1,5 @@
 <resources>
-<<<<<<< HEAD
     <string name="app_name">Zikar Tasbeeh</string>
-=======
-    <string name="app_name">Zikar Digital Tasbeeh</string>
->>>>>>> furqan_br
     <string name="tap_to_open_mic">Click to Open Mic</string>
     <string name="commands">Commands</string>
     <string name="add_new_ziker">Add New Ziker</string>

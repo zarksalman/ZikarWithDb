@@ -1,31 +1,49 @@
 package com.textile.texttospeech;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.textile.texttospeech.databinding.ActivityZikarListBinding;
+
+import java.util.List;
 
 public class ZikarListActivity extends AppCompatActivity {
+
+    private ZikarViewModel zikarViewModel;
+    private ZikarAdapter adapter;
+    private ActivityZikarListBinding activityZikarListBinding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_zikar_list);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        activityZikarListBinding = DataBindingUtil.setContentView(this, R.layout.activity_zikar_list);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        zikarViewModel = ViewModelProviders.of(this).get(ZikarViewModel.class);
+        setAdapter();
+        getAllZikars();
+    }
+
+    private void setAdapter() {
+
+        adapter = new ZikarAdapter(this);
+        activityZikarListBinding.rvZikars.setAdapter(adapter);
+        activityZikarListBinding.rvZikars.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+    }
+
+    private void getAllZikars() {
+
+        zikarViewModel.getAllZikars().observe(this, new Observer<List<Zikar>>() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onChanged(List<Zikar> zikars) {
+                adapter.setData(zikars);
             }
         });
     }
-
 }

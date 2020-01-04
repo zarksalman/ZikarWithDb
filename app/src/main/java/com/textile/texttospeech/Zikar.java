@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "zikar")
 public class Zikar {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private Integer id;
     private String zikar;

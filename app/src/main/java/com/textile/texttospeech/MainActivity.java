@@ -33,10 +33,39 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         zikarViewModel = ViewModelProviders.of(this).get(ZikarViewModel.class);
 
-        setAdaptersData();
+        Zikar zikar = new Zikar();
+        zikar.setZikar("Allah hu Akbar");
+        zikar.setCount("50");
+        zikar.setDate("03 jan 2020");
+
+        zikarViewModel.insertZikarText(zikar);
+
+        zikar.setZikar("Subhan Allah");
+        zikar.setCount("500");
+        zikar.setDate("02 jan 2020");
+
+        zikarViewModel.insertZikarText(zikar);
+        zikar.setZikar("Masha Allah");
+        zikar.setCount("10");
+        zikar.setDate("01 jan 2020");
+
+        zikarViewModel.insertZikarText(zikar);
+        zikar.setZikar("Allah hu Akbar");
+        zikar.setCount("200");
+        zikar.setDate("04 jan 2020");
+
+        activityMainBinding.btnAddZikar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ZikarListActivity.class));
+            }
+        });
+
     }
 
     // Showing google speech input dialog
@@ -68,10 +97,15 @@ public class MainActivity extends AppCompatActivity {
                     ArrayList<String> result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
+
                     Zikar zikar = new Zikar();
+                    zikar.setZikar("Allah hu Akbar");
+                    zikar.setCount("50");
+                    zikar.setDate("03 jan 2020");
+
                     zikar.setZikar(result.get(0));
 
-                    zikarViewModel.insertCommandsText(zikar);
+                    zikarViewModel.insertZikarText(zikar);
                 }
                 break;
             }
@@ -81,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setAdaptersData() {
 
-        zikarViewModel.getAllCommands().observe(this, new Observer<List<Zikar>>() {
+        zikarViewModel.getAllZikars().observe(this, new Observer<List<Zikar>>() {
             @Override
             public void onChanged(List<Zikar> zikars) {
 
